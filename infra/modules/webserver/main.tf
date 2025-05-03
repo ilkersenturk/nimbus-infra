@@ -70,7 +70,7 @@ resource "aws_instance" "web" {
     amazon-linux-extras install nginx1 -y
     systemctl start nginx
     systemctl enable nginx
-    echo "<h1>Welcome to Nimbur Web Server (Nginx)</h1>" > /usr/share/nginx/html/index.html
+    echo "<h1>Welcome to Nimbus Web Server (Nginx)</h1>" > /usr/share/nginx/html/index.html
   EOF
   
 

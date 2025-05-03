@@ -5,16 +5,16 @@ variable "private_subnet_ids" {
 variable "lambda_sg_id" {}
 
 resource "aws_db_subnet_group" "db_subnets" {
-  name       = "nimbur-db-subnet-group"
+  name       = "nimbus-db-subnet-group"
   subnet_ids = var.private_subnet_ids
 
   tags = {
-    Name = "nimbur-db-subnet-group"
+    Name = "nimbus-db-subnet-group"
   }
 }
 
 resource "aws_security_group" "db_sg" {
-  name        = "nimbur-db-sg"
+  name        = "nimbus-db-sg"
   description = "Allow MySQL access from Lambda only"
   vpc_id      = var.vpc_id
 
@@ -33,18 +33,18 @@ resource "aws_security_group" "db_sg" {
   }
 
   tags = {
-    Name = "nimbur-db-sg"
+    Name = "nimbus-db-sg"
   }
 }
 
 resource "aws_db_instance" "mysql" {
-  identifier              = "nimbur-mysql-db"
+  identifier              = "nimbus-mysql-db"
   engine                  = "mysql"
   engine_version          = "8.0"
   instance_class          = "db.t3.micro"
   allocated_storage       = 20
   username                = "admin"
-  password                = "NimburSecure123!" # you can move this to terraform.tfvars
+  password                = "NimbusSecure123!" # you can move this to terraform.tfvars
   db_subnet_group_name    = aws_db_subnet_group.db_subnets.name
   vpc_security_group_ids  = [aws_security_group.db_sg.id]
   skip_final_snapshot     = true
@@ -53,6 +53,6 @@ resource "aws_db_instance" "mysql" {
   multi_az                = false
 
   tags = {
-    Name = "nimbur-mysql-db"
+    Name = "nimbus-mysql-db"
   }
 }

@@ -15,18 +15,18 @@ resource "random_id" "rand" {
 # S3 Bucket (private)
 # Creating a s3 bucker , and having option to delete by force 
 resource "aws_s3_bucket" "upload_bucket" {
-  bucket        = "nimbur-upload-bucket-${random_id.rand.hex}"
+  bucket        = "nimbus-upload-bucket-${random_id.rand.hex}"
   force_destroy = true
 
   tags = {
-    Name = "nimbur-private-upload"
+    Name = "nimbus-private-upload"
   }
 }
 
 # IAM Role for Lambda
 # allowing lambda service to use IAM
 resource "aws_iam_role" "lambda_exec_role" {
-  name = "nimbur_lambda_exec_role"
+  name = "nimbus_lambda_exec_role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -42,7 +42,7 @@ resource "aws_iam_role" "lambda_exec_role" {
 
 # IAM Policy for S3 access and logging
 resource "aws_iam_role_policy" "lambda_policy" {
-  name = "nimbur_lambda_policy"
+  name = "nimbus_lambda_policy"
   role = aws_iam_role.lambda_exec_role.id
 
   policy = jsonencode({

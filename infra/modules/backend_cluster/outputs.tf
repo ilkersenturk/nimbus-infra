@@ -2,7 +2,9 @@ output "backend_alb_dns" {
   description = "Internal ALB DNS name for the ECS backend"
   value       = aws_lb.backend_alb.dns_name
 }
-
+output "backend_alb_listener_arn" {
+  value = aws_lb_listener.backend_listener.arn
+}
 
 output "backend_service_name" {
   description = "ECS backend service name"
