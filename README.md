@@ -1,14 +1,12 @@
-# nimbus-infra
-Repo for creating AWS services/ provisioning/ executions of infra setup
-
 nimbus-infra/
-├── infra/
-│   ├── main.tf
-│   ├── providers.tf
-│   ├── variables.tf
-│   ├── outputs.tf
-│   └── terraform.tfvars      # Optional, private config values
-├── scripts/
-│   └── install_terraform.sh  # Installs Terraform if missing
-├── .gitignore
-├── README.md
+├── main.tf                   # Root Terraform entrypoint
+├── providers.tf              # AWS provider & region settings
+├── variables.tf              # Root-level input variables
+├── outputs.tf                # Root-level outputs
+├── modules/                  # Modular reusable infrastructure
+│   ├── networking/           # VPC, subnets, route tables
+│   ├── webserver/            # EC2 + security group + user data
+│   ├── backend_cluster/      # ASG + ELB for backend
+│   ├── s3_and_lambda/        # S3 bucket + Lambda function
+│   ├── api_gateway/          # API Gateway resources
+│   └── database/             # RDS or DynamoDB setup
