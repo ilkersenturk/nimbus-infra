@@ -25,7 +25,7 @@ resource "aws_vpc" "main" {
 
 ######### Internet Gateway #########
 
-An Internet Gateway (IGW) is what allows resources in your public subnets (like EC2) to talk to the internet.
+#An Internet Gateway (IGW) is what allows resources in your public subnets (like EC2) to talk to the internet.
 # rosource means we will be creating aws_internet_gateway
 #vpc_id = aws_vpc.main.id	🔹 This attaches the Internet Gateway to your VPC
 
