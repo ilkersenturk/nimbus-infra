@@ -18,9 +18,10 @@ module "webserver" {
 }
 
 module "api_gateway" {
-  source           = "./modules/api_gateway"
-  vpc_id           = module.networking.vpc_id
-  alb_listener_arn = module.backend_cluster.backend_alb_listener_arn
+  source              = "./modules/api_gateway"
+  vpc_id              = module.networking.vpc_id
+  alb_listener_arn    = module.backend_cluster.backend_alb_listener_arn
+  private_subnet_ids  = module.networking.private_subnet_ids  # ✅ Add this line
 }
 module "s3_and_lambda" {
   source              = "./modules/s3_and_lambda"
