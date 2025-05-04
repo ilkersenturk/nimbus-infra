@@ -26,7 +26,7 @@ resource "aws_s3_bucket" "upload_bucket" {
 # IAM Role for Lambda
 # allowing lambda service to use IAM
 resource "aws_iam_role" "lambda_exec_role" {
-  name = "nimbus_lambda_exec_role"
+  name = "nimbus_lambda_exec_role-${random_id.rand.hex}"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",

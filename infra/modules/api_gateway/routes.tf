@@ -19,7 +19,8 @@ resource "aws_apigatewayv2_deployment" "deployment" {
 resource "aws_apigatewayv2_stage" "stage" {
   api_id      = aws_apigatewayv2_api.backend_api.id
   name        = "prod"
-  deployment_id = aws_apigatewayv2_deployment.deployment.id
+  # when auto deploy is true u can not pass deployment id
+  # deployment_id = aws_apigatewayv2_deployment.deployment.id
 
   auto_deploy = true
 }
